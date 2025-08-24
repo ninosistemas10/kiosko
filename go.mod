@@ -1,7 +1,6 @@
 module github.com/ninosistemas10/kiosko
 
-go 1.25.0
-
+go 1.24.4
 require (
 	github.com/cloudinary/cloudinary-go v1.7.0
 	github.com/golang-jwt/jwt v3.2.2+incompatible
