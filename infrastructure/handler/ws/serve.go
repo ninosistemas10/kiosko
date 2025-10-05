@@ -24,5 +24,3 @@ func ServeWS(hub *Hub, c echo.Context) error {
 
 	return nil
 }
-
-

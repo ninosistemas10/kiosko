@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"log"
 	"os"
 	"strings"
 
@@ -11,7 +12,7 @@ import (
 func loadEnv() error {
 	err := godotenv.Load()
 	if err != nil {
-		return err
+		log.Println(".env file not found, usando variables de entorno del sistema")
 	}
 
 	return nil

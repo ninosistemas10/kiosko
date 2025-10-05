@@ -38,11 +38,7 @@ func main() {
 	ws.SetHub(hub) // Guardar hub globakl para Emit()
 	e.GET("/ws", func(c echo.Context) error { return ws.ServeWS(hub, c) })
 
-	port := os.Getenv("SERVER_PORT")
-	if port == "" {
-		port = "8081" // fallback local
-	}
-	err = e.Start(":" + port)
+	err = e.Start(":" + os.Getenv("SERVER_PORT"))
 	if err != nil {
 		log.Fatal(err)
 	}
