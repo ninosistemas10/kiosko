@@ -11,6 +11,7 @@ import (
 	"github.com/ninosistemas10/kiosko/infrastructure/handler/login"
 	"github.com/ninosistemas10/kiosko/infrastructure/handler/producto"
 	"github.com/ninosistemas10/kiosko/infrastructure/handler/user"
+	"github.com/ninosistemas10/kiosko/infrastructure/handler/ws"
 )
 
 func InitRoutes(e *echo.Echo, dbPool *pgxpool.Pool) {
@@ -21,6 +22,11 @@ func InitRoutes(e *echo.Echo, dbPool *pgxpool.Pool) {
 
 	// Health check
 	health(e)
+
+	// WebSocket
+	hub := ws.NewHub()
+	go hub.Run()
+	e.GET("/ws", func(c echo.Context) error { return ws.ServeWS(hub, c) })
 
 	// Resto de rutas
 	category.NewRouter(e, dbPool)

@@ -9,6 +9,7 @@ import (
 	"github.com/ninosistemas10/kiosko/config"
 	"github.com/ninosistemas10/kiosko/domain/category"
 	"github.com/ninosistemas10/kiosko/infrastructure/handler/response"
+	"github.com/ninosistemas10/kiosko/infrastructure/handler/ws"
 	"github.com/ninosistemas10/kiosko/model"
 )
 
@@ -31,6 +32,7 @@ func (h handler) Create(c echo.Context) error {
 		return h.response.Error(c, "useCase.Create()", err)
 	}
 
+	ws.Emit("category", "created", m)
 	return c.JSON(h.response.Created(m))
 }
 
@@ -51,6 +53,7 @@ func (h handler) Update(c echo.Context) error {
 		return h.response.Error(c, "h.useCase.Update()", err)
 	}
 
+	ws.Emit("category", "updated", m)
 	return c.JSON(h.response.Updated(m))
 }
 
@@ -113,6 +116,7 @@ func (h handler) Delete(c echo.Context) error {
 		return h.response.Error(c, "useCase.Delete()", err)
 	}
 
+	ws.Emit("category", "deleted", map[string]interface{}{"id": ID})
 	return c.JSON(h.response.Deleted(nil))
 }
 
