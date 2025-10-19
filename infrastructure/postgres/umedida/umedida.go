@@ -11,7 +11,7 @@ import (
 	"github.com/ninosistemas10/kiosko/model"
 )
 
-const table = "unidadMedida"
+const table = "unidadmedida"
 
 var fields = []string{
 	"id",
