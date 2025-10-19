@@ -33,9 +33,8 @@ func adminRoutes(e *echo.Echo, h handler, middlewares ...echo.MiddlewareFunc) {
 }
 
 func publicRoutes(e *echo.Echo, h handler) {
-	route := e.Group("/ninosistemas/public/umedida")
 
-	route.POST("", h.Create)
-	route.DELETE("/:id", h.Delete)
-	route.PUT("/:id", h.Update)
+	e.POST("/ninosistemas/public/umedida", h.Create)
+	e.PUT("/ninosistemas/public/umedida/:id", h.Update)
+	e.DELETE("/ninosistemas/public/umedida/:id", h.Delete)
 }
