@@ -66,7 +66,7 @@ CREATE TABLE productos (
     destacado           BOOLEAN     DEFAULT FALSE,
     lleva_inventario    BOOLEAN DEFAULT TRUE,
     created_at          INTEGER         NOT NULL DEFAULT EXTRACT(EPOCH FROM NOW())::INT,
-    updated_at          INTEGER
+    updated_at          INTEGERaa
 );
 
 CREATE TABLE subproductos (

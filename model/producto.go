@@ -1,23 +1,24 @@
 package model
 
 import (
-	"time"
-
 	"github.com/google/uuid"
 )
 
 type Producto struct {
-	ID          uuid.UUID `json:"id"`
-	IdCategoria uuid.UUID `json:"idcategoria"`
-	Nombre      string    `json:"nombre"`
-	Precio      float64   `json:"precio"`
-	Imagen      string    `json:"imagen"`
-	Descripcion string    `json:"descripcion"`
-	Activo      bool      `json:"activo"`
-	Time        time.Time `json:"time"`
-	Calorias    float64   `json:"calorias"`
-	CreateAt    int64     `json:"created_at"`
-	UpdateAt    int64     `json:"updated_at"`
+	ID              uuid.UUID `json:"id"`
+	IdCategoria     uuid.UUID `json:"idCategoria"`
+	IdUnidadMedida  uuid.UUID `json:"idUnidadMedida"`
+	Nombre          string    `json:"nombre"`
+	PrecioVenta     float64   `json:"precioVenta"`
+	CostoPromedio   float64   `json:"costoPromedio"`
+	StockMnimo      int32     `json:"stockMinimo"`
+	Descripcion     string    `json:"descripcion"`
+	Imagen          string    `json:"imagen"`
+	Activo          bool      `json:"activo"`
+	Destacado       bool      `json:"destacado"`
+	LlevaInventario bool      `json:"llevaInventario"`
+	CreateAt        int64     `json:"created_at"`
+	UpdateAt        int64     `json:"updated_at"`
 }
 
 func (p Producto) HasID() bool {
