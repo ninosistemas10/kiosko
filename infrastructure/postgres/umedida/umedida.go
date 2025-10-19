@@ -2,10 +2,9 @@ package umedida
 
 import (
 	"context"
-	"database/sql"
 
 	"github.com/google/uuid"
-	"github.com/jackc/pgx/v5"
+
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/ninosistemas10/kiosko/infrastructure/postgres"
 	"github.com/ninosistemas10/kiosko/model"
@@ -81,25 +80,25 @@ func (u UnidadMedida) Delete(ID uuid.UUID) error {
 	return nil
 }
 
-func (u UnidadMedida) scanRow(s pgx.Row) (model.UnidadMedida, error) {
-	m := model.UnidadMedida{}
-	updatedAtNull := sql.NullInt64{}
+// func (u UnidadMedida) scanRow(s pgx.Row) (model.UnidadMedida, error) {
+// 	m := model.UnidadMedida{}
+// 	updatedAtNull := sql.NullInt64{}
 
-	err := s.Scan(
-		&m.ID,
-		&m.Nombre,
-		&m.Abreviatura,
-		&m.Activo,
-		&m.CreatedAt,
-		&updatedAtNull,
-	)
+// 	err := s.Scan(
+// 		&m.ID,
+// 		&m.Nombre,
+// 		&m.Abreviatura,
+// 		&m.Activo,
+// 		&m.CreatedAt,
+// 		&updatedAtNull,
+// 	)
 
-	if err != nil {
-		return m, err
-	}
+// 	if err != nil {
+// 		return m, err
+// 	}
 
-	m.UpdatedAt = updatedAtNull.Int64
+// 	m.UpdatedAt = updatedAtNull.Int64
 
-	return m, nil
+// 	return m, nil
 
-}
+// }

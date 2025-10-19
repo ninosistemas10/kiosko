@@ -64,6 +64,6 @@ func (h handler) Delete(c echo.Context) error {
 		return h.response.Error(c, "useCase.Delete()", err)
 	}
 
-	ws.Emit("umedida", "deleted", map[string]interface{}{"id": ID})
+	ws.Emit("unidadmedida", "deleted", map[string]interface{}{"id": ID})
 	return c.JSON(h.response.Deleted(nil))
 }
