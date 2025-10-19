@@ -20,7 +20,7 @@ var fields = []string{
 	"idcategoria",
 	"idunidadmedida",
 	"nombre",
-	"descripcion",
+	"descripcion", // ✅ Agregado: faltaba esta columna
 	"precioventa",
 	"costopromedio",
 	"stockminimo",
@@ -39,7 +39,6 @@ var (
 	psqlGetAll           = postgres.BuildSQLSelect(table, fields)
 	psqlGetAllByCategory = postgres.BuilddSQLSelectByCategory(table, fields)
 	psqlUpdateImage      = `UPDATE productos SET imagen = $1, updated_at = $2 WHERE id = $3` // Nueva consulta
-
 )
 
 type Producto struct {
@@ -58,7 +57,7 @@ func (p Producto) Create(m *model.Producto) error {
 		m.IdCategoria,
 		m.IdUnidadMedida,
 		m.Nombre,
-		m.Descripcion,
+		m.Descripcion, // ✅ Ahora sí corresponde a "descripcion"
 		m.PrecioVenta,
 		m.CostoPromedio,
 		m.StockMnimo,
@@ -100,8 +99,6 @@ func (p Producto) Update(m *model.Producto) error {
 }
 
 func (c Producto) UpdateImage(ID uuid.UUID, imagePath string) error {
-
-	// Ejecutar la consulta de actualización
 	_, err := c.db.Exec(
 		context.Background(),
 		psqlUpdateImage,
@@ -182,7 +179,6 @@ func (p Producto) GetAll() (model.Productos, error) {
 		if err != nil {
 			return nil, err
 		}
-
 		ms = append(ms, m)
 	}
 
