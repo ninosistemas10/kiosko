@@ -28,7 +28,7 @@ func (h handler) Create(c echo.Context) error {
 		return h.response.Error(c, "useCase.Create()", err)
 	}
 
-	ws.Emit("category", "created", m)
+	ws.Emit("umedida", "created", m)
 	return c.JSON(h.response.Created(m))
 }
 
@@ -49,7 +49,7 @@ func (h handler) Update(c echo.Context) error {
 		return h.response.Error(c, "h.useCase.Update()", err)
 	}
 
-	ws.Emit("category", "updated", m)
+	ws.Emit("umedida", "updated", m)
 	return c.JSON(h.response.Updated(m))
 }
 
