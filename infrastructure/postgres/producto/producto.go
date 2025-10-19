@@ -20,6 +20,7 @@ var fields = []string{
 	"idcategoria",
 	"idunidadmedida",
 	"nombre",
+	"descripcion",
 	"precioventa",
 	"costopromedio",
 	"stockminimo",
