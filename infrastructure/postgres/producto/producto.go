@@ -17,16 +17,16 @@ const table = "productos"
 
 var fields = []string{
 	"id",
-	"idCategoria",
-	"idUnidadMedida",
+	"idcategoria",
+	"idunidadmedida",
 	"nombre",
-	"precioVenta",
-	"costoPromdio",
-	"stockMinimo",
+	"precioventa",
+	"costopromedio",
+	"stockminimo",
 	"imagen",
 	"activo",
 	"destacado",
-	"llevaInventario",
+	"llevainventario",
 	"created_at",
 	"updated_at",
 }
