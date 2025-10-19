@@ -17,13 +17,13 @@ const table = "productos"
 
 var fields = []string{
 	"id",
-	"idCategoria",
-	"idUnidadMedida",
+	"idcategoria",
+	"idunidadmedida",
 	"nombre",
 	"descripcion", // ✅ Agregado: faltaba esta columna
-	"precioVenta",
-	"costoPromedio",
-	"stockMinimo",
+	"precioventa",
+	"costopromedio",
+	"stockminimo",
 	"imagen",
 	"activo",
 	"destacado",

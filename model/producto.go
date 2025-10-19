@@ -6,12 +6,12 @@ import (
 
 type Producto struct {
 	ID              uuid.UUID `json:"id"`
-	IdCategoria     uuid.UUID `json:"idCategoria"`
-	IdUnidadMedida  uuid.UUID `json:"idUnidadMedida"`
+	IdCategoria     uuid.UUID `json:"idcategoria"`
+	IdUnidadMedida  uuid.UUID `json:"idunidadmedida"`
 	Nombre          string    `json:"nombre"`
-	PrecioVenta     float64   `json:"precioVenta"`
-	CostoPromedio   float64   `json:"costoPromedio"`
-	StockMnimo      int32     `json:"stockMinimo"`
+	PrecioVenta     float64   `json:"precioventa"`
+	CostoPromedio   float64   `json:"costopromedio"`
+	StockMnimo      int32     `json:"stockminimo"`
 	Descripcion     string    `json:"descripcion"`
 	Imagen          string    `json:"imagen"`
 	Activo          bool      `json:"activo"`
