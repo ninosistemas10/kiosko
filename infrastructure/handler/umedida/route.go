@@ -10,15 +10,15 @@ import (
 )
 
 func NewRouter(e *echo.Echo, dbPool *pgxpool.Pool) {
-	h := builHandler(dbPool)
+	h := buildHandler(dbPool)
 
-	authMiddlleware := middle.New()
+	authMiddleware := middle.New()
 
-	adminRoutes(e, h, authMiddlleware.IsValid, authMiddlleware.IsAdmin)
+	adminRoutes(e, h, authMiddleware.IsValid, authMiddleware.IsAdmin)
 	publicRoutes(e, h)
 }
 
-func builHandler(dbPool *pgxpool.Pool) handler {
+func buildHandler(dbPool *pgxpool.Pool) handler {
 	useCase := umedida.New(umedidaStorage.New(dbPool))
 	return newHandler(useCase)
 }
@@ -26,16 +26,15 @@ func builHandler(dbPool *pgxpool.Pool) handler {
 func adminRoutes(e *echo.Echo, h handler, middlewares ...echo.MiddlewareFunc) {
 	route := e.Group("/ninosistemas/admin/umedida", middlewares...)
 
-	route.POST("", h.Create)
+	route.POST("/", h.Create)
 	route.PUT("/:id", h.Update)
 	route.DELETE("/:id", h.Delete)
-
 }
 
 func publicRoutes(e *echo.Echo, h handler) {
 	route := e.Group("/ninosistemas/public/umedida")
 
-	route.POST("", h.Create)
-	route.DELETE("/:id", h.Delete)
+	route.POST("/", h.Create)
 	route.PUT("/:id", h.Update)
+	route.DELETE("/:id", h.Delete)
 }
